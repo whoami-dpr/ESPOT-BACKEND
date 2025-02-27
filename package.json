@@ -1,0 +1,28 @@
+{
+  "name": "espot",
+  "version": "1.0.0",
+  "description": "servidor para el back de la aplicacion de espot aqui se recibiran las solicitudes y logica de negocio ",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file .env --watch app.js",
+    "start": "node --env-file .env app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whoami-dpr/ESPOT-BACKEND.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whoami-dpr/ESPOT-BACKEND/issues"
+  },
+  "homepage": "https://github.com/whoami-dpr/ESPOT-BACKEND#readme",
+  "devDependencies": {
+    "standard": "17.1.2"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  }
+}
