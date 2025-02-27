@@ -7,5 +7,10 @@ export const createAuthRouter = () => {
     res.send('Hola mundo')
   })
 
+  authRouter.post('/api/auth/register', (req, res) => {
+    const user = req.body
+    res.send('Bienvenido a registrarse estos son sus datos')
+  })
+
   return authRouter
 }

@@ -1,0 +1,62 @@
+# Rutas CRUD de usuarios / User CRUD routes
+
+# Obtener todos los usuarios / Get all users
+GET http://localhost:3000/api/user
+Content-Type: application/json
+
+###
+
+# Obtener un usuario por ID / Get a user by ID
+GET http://localhost:3000/api/user/:id
+Content-Type: application/json
+
+###
+
+# Actualizar un usuario por ID / Update a user by ID
+PUT http://localhost:3000/api/user/:id
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated",
+  "email": "john.doe.updated@example.com"
+}
+
+###
+
+# Eliminar un usuario por ID / Delete a user by ID
+DELETE http://localhost:3000/api/user/:id
+Content-Type: application/json
+
+
+###
+
+# Rutas de autenticación / Auth routes
+
+# Registrar un nuevo usuario / Register a new user
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "password123",
+  "age": 30,
+  "isAdult": true
+}
+
+###
+
+# Iniciar sesión de un usuario / Login a user
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john.doe@example.com",
+  "password": "password123"
+}
+
+###
+
+# Cerrar sesión de un usuario / Logout a user
+POST http://localhost:3000/api/auth/logout
+Content-Type: application/json
