@@ -7,6 +7,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(createAuthRouter())
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('el servidor esta escuchando en http://localhost:3000')
 })
