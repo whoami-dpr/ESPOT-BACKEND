@@ -12,10 +12,14 @@ class AuthController {
     if (result.success === false) {
       const field = result.error.issues[0].path[0]
       const error = result.error.issues[0].message
-      return res.status(422).send({ field, error })
+      return res.status(422).json({ field, error })
     }
 
     const response = this.authModel.userRegister({ user })
+
+    if (response.success === false) {
+      return res.status(422).json({ error: response.message })
+    }
 
     res.send(response)
   }

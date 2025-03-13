@@ -1,6 +1,6 @@
 class AuthModel {
   static userRegister = ({ user }) => {
-    return 'user creado'
+    return { success: true, message: 'Usuario creado satisfactoriamente' }
   }
 }
 
