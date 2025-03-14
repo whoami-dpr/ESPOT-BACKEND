@@ -11,5 +11,7 @@ export const createAuthRouter = ({ authModel }) => {
 
   authRouter.post('/api/auth/register', authController.register)
 
+  authRouter.post('/api/auth/login', authController.login)
+
   return authRouter
 }
