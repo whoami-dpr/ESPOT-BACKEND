@@ -13,5 +13,9 @@ export const createAuthRouter = ({ authModel }) => {
 
   authRouter.post('/api/auth/login', authController.login)
 
+  authRouter.get('/api/auth/protected', authController.verifyToken, (req, res) => {
+    res.status(200).json({ message: 'user is authenticated' })
+  })
+
   return authRouter
 }

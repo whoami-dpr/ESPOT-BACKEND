@@ -50,11 +50,11 @@ Content-Type: application/json
 ###
 
 # Iniciar sesión de un usuario / Login a user
-POST http://localhost:3000/api/auth/login
+POST http://localhost:4000/api/auth/login
 Content-Type: application/json
 
 {
-  "identificador": "johnnie",
+  "username": "johnnie",
   "password": "password123"
 }
 
@@ -63,3 +63,13 @@ Content-Type: application/json
 # Cerrar sesión de un usuario / Logout a user
 POST http://localhost:3000/api/auth/logout
 Content-Type: application/json
+
+### 
+GET http://localhost:4000/api/auth/protected
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5uaWUiLCJpYXQiOjE3NDI2MTQxMzYsImV4cCI6MTc0MjYxNzczNn0.DoJK2YSGsjnc2_M9ZTjscvu4yfiqSLRsGlJxJPjw-wo
+
+{
+  "username": "johnnie",
+  "password": "password123"
+}

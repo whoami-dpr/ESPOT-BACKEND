@@ -1,5 +1,9 @@
 import { validateLogin } from '../schemas/auth.schema.js'
 import { validateUser } from '../schemas/user.schema.js'
+import config from '../config.js'
+import jwt from 'jsonwebtoken'
+
+const { SECRET_KEY } = config
 
 class AuthController {
   constructor ({ authModel }) {
@@ -26,16 +30,46 @@ class AuthController {
   }
 
   login = (req, res) => {
-    const user = req.body
-    const result = validateLogin(user)
+    const { username, password } = req.body
 
-    console.log(result)
+    console.log(username, password)
+
+    if (!username || !password) {
+      return res.status(400).json({ message: 'username or password are required' })
+    }
+
+    const result = validateLogin({
+      identifier: username,
+      password
+    })
+
     if (result.success === false) {
       const field = result.error.issues[0].path[0]
       const error = result.error.issues[0].message
       return res.status(422).json({ field, error })
     }
-    return res.status(200).send('Estas logeado')
+
+    if (username === 'johnnie' && password === 'password123') {
+      const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' })
+      return res.status(200).json({ token })
+    } else {
+      return res.status(401).json({ message: 'Authentication failed' })
+    }
+  }
+
+  verifyToken = (req, res, next) => {
+    const header = req.header('Authorization')
+    const token = header.split(' ')[1]
+    if (!token) {
+      return res.status(401).json({ message: 'Token not provied' })
+    }
+    try {
+      const payload = jwt.verify(token, SECRET_KEY)
+      req.username = payload.username
+      next()
+    } catch (error) {
+      return res.status(403).json({ message: 'Token not valid' })
+    }
   }
 }
 
